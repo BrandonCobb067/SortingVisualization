@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body style="background-color: #454b66; color: #f4f4f4; margin: 0; margin-left: 0px">
+    <header>
+        <div class="banner"> 
+            <button class="imgbutton" onclick="resetArray()" style="margin-left: 10%;">
+                <img src="\images\button.png" class="center-image grey-hover" style="width: 100px; height: auto;">
+            </button>
+
+            <select id="Algorithm" name="Algorithm" onchange="chooseAlgorithm(this.value)">
+                <option value="Insertion Sort">Insertion Sort</option>
+                <option value="Merge Sort">Merge Sort</option>
+                <option value="Heap Sort">Heap Sort</option>
+                <option value="Bubble Sort">Bubble Sort</option>
+            </select>
+
+            <div style="display: inline-block; margin-left: 20px;">
+                <label for="array-length">Array Length:</label>
+                <input type="range" id="array-length" name="array-length" min="5" max="100" value="50" oninput="changeArrayLength(this.value)">
+            </div>
+
+            <div style="display: inline-block; margin-left: 20px;">
+                <label for="array-length">Sorting Speed:</label>
+                <input type="range" id="sorting-speed" name="sorting-speed" min="0" max="200" value="190" oninput="changeSortingSpeed(this.value)">
+            </div>
+
+            <button class="imgbutton" onclick="startVisualization()" style="margin-left: 10%;">
+                <img src="\images\button.png" class="center-image grey-hover" style="width: 100px; height: auto;">
+            </button>
+
+            <select id="Style" name="Style">
+                <option value="Bar Graph">Bar Graph</option>
+                <option value="Color Gradiant">Color Gradiant</option>
+                <option value="Color Wheel">Color Wheel</option>
+            </select>
+        </div>
+        
+    </header>
+
+    <div class="array-container" id="array-container"></div>
+
+    <footer class="footer">
+        <h3 style="margin-top: 0px;">
+            <u>Contact Me</u>
+        </h3>
+        <div style="text-align: left; width: 80%; margin: 0 auto;">
+            <b>Email:</b>
+            BrandonCobb067@gmail.com
+        </div>
+    </footer>
+    <script src="script.js"></script> 
+</body>
+</html>
