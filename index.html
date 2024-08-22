@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* General Styles */
-        body {
-            background-color: #454b66;
-            color: #f4f4f4;
+        html, body {
+            height: 100%;
             margin: 0;
             font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #454b66;
+            color: #f4f4f4;
         }
 
         header {
@@ -106,13 +109,22 @@
             transform: scale(1.2);
         }
 
+        /* Container Styles */
+        .array-container {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin: 20px auto;
+            width: 90%;
+        }
+
         /* Footer Styles */
         footer {
             background-color: #2c3142;
             padding: 20px 0;
             text-align: center;
             color: #f4f4f4;
-            margin-top: 20px;
         }
 
         footer h3 {
@@ -120,7 +132,6 @@
             font-size: 1.5em;
         }
     </style>
-    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -146,10 +157,10 @@
         <button class="custom-button" onclick="startVisualization()">Sort</button>
     </header>
 
-    <div class="array-container" id="array-container" style="width: 90%; margin: 20px auto; height: 500px; display: flex; align-items: flex-end; margin-top: 150px;"></div>
+    <div class="array-container" id="array-container"></div>
 
-    <footer class="footer" style="width: 100%; margin: 0 auto; text-align: center; padding-bottom: 18vh;">
-        <h3 style="margin-top: 0px;">
+    <footer class="footer">
+        <h3>
             <u>Contact Me</u>
         </h3>
         <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; margin-top: 10px;">
