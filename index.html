@@ -5,56 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Sorting Visualizer</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            background-color: #454b66;
+            color: #f4f4f4;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            background-color: #2c3142;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styles */
+        .custom-button {
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            margin-right: 20px;
+            margin-left: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .custom-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #5a54e0;
+        }
+
+        /* Dropdown Styles */
+        select {
+            background-color: #6c63ff;
+            color: #fff;
+            border: 2px solid #6c63ff;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        select:hover {
+            background-color: #5a54e0;
+            color: #f4f4f4;
+        }
+
+        /* Slider Styles */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #6c63ff;
+            outline: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3142;
+            padding: 20px 0;
+            text-align: center;
+            color: #f4f4f4;
+            margin-top: 20px;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+    </style>
     <script src="script.js"></script>
 </head>
-<body style="background-color: #454b66; color: #f4f4f4; margin: 0; margin-left: 0px">
+<body>
     <header>
-        <div class="banner"> 
-            <button class="imgbutton" onclick="resetArray()" style="margin-left: 10%;">
-                <img src="\SortingVisualization\images\button.png" class="center-image grey-hover" style="width: 100px; height: auto;">
-            </button>
+        <button class="custom-button" onclick="resetArray()">Reset</button>
 
-            <select id="Algorithm" name="Algorithm" onchange="chooseAlgorithm(this.value)">
-                <option value="Insertion Sort">Insertion Sort</option>
-                <option value="Merge Sort">Merge Sort</option>
-                <option value="Heap Sort">Heap Sort</option>
-                <option value="Bubble Sort">Bubble Sort</option>
-            </select>
+        <select id="Algorithm" name="Algorithm" onchange="chooseAlgorithm(this.value)">
+            <option value="Insertion Sort">Insertion Sort</option>
+            <option value="Merge Sort">Merge Sort</option>
+            <option value="Heap Sort">Heap Sort</option>
+            <option value="Bubble Sort">Bubble Sort</option>
+        </select>
 
-            <div style="display: inline-block; margin-left: 20px;">
-                <label for="array-length">Array Length:</label>
-                <input type="range" id="array-length" name="array-length" min="5" max="100" value="50" oninput="changeArrayLength(this.value)">
-            </div>
-
-            <div style="display: inline-block; margin-left: 20px;">
-                <label for="array-length">Sorting Speed:</label>
-                <input type="range" id="sorting-speed" name="sorting-speed" min="0" max="200" value="190" oninput="changeSortingSpeed(this.value)">
-            </div>
-
-            <button class="imgbutton" onclick="startVisualization()" style="margin-left: 10%;">
-                <img src="\SortingVisualization\\images\button.png" class="center-image grey-hover" style="width: 100px; height: auto;">
-            </button>
-
-            <select id="Style" name="Style">
-                <option value="Bar Graph">Bar Graph</option>
-                <option value="Color Gradiant">Color Gradiant</option>
-                <option value="Color Wheel">Color Wheel</option>
-            </select>
+        <div style="display: inline-block; margin-left: 20px;">
+            <label for="array-length">Array Length:</label>
+            <input type="range" id="array-length" name="array-length" min="5" max="100" value="50" oninput="changeArrayLength(this.value)">
         </div>
-        
+
+        <div style="display: inline-block; margin-left: 20px;">
+            <label for="sorting-speed">Sorting Speed:</label>
+            <input type="range" id="sorting-speed" name="sorting-speed" min="0" max="200" value="190" oninput="changeSortingSpeed(this.value)">
+        </div>
+
+        <button class="custom-button" onclick="startVisualization()">Sort</button>
     </header>
 
-    <div class="array-container" id="array-container"></div>
+    <div class="array-container" id="array-container" style="width: 90%; margin: 20px auto; height: 500px; display: flex; align-items: flex-end; margin-top: 150px;"></div>
 
-    <footer class="footer">
+    <footer class="footer" style="width: 100%; margin: 0 auto; text-align: center; padding-bottom: 18vh;">
         <h3 style="margin-top: 0px;">
             <u>Contact Me</u>
         </h3>
-        <div style="text-align: left; width: 80%; margin: 0 auto;">
-            <b>Email:</b>
-            BrandonCobb067@gmail.com
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; margin-top: 10px;">
+            <div style="flex: 1;">
+                <b>Phone:</b> (816) 500-4251
+            </div>
+            <div style="flex: 1;">
+                <b>Email:</b> BrandonCobb067@gmail.com
+            </div>
         </div>
     </footer>
-    <script src="script.js"></script> 
+
+    <script src="script.js"></script>
 </body>
 </html>

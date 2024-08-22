@@ -77,24 +77,68 @@ function resetArray() {
 }
 
 // DESC: Reset colors and render bar graph
+// function renderBarGraph() {
+//     const arrayContainer = document.getElementById('array-container');
+//     arrayContainer.innerHTML = '';
+//     array.forEach(value => {
+//         const bar = document.createElement('div');
+//         bar.classList.add('array-bar');
+//         bar.style.height = `${value*5}px`;
+//         arrayContainer.appendChild(bar);
+//     });
+// }
+// DESC: Reset colors and render bar graph
 function renderBarGraph() {
     const arrayContainer = document.getElementById('array-container');
     arrayContainer.innerHTML = '';
+
+    // Calculate the width of each bar dynamically based on the container's width and array length
+    const containerWidth = arrayContainer.clientWidth;
+    const barWidth = Math.floor(containerWidth / arrayLength) - 2; // Subtract 2 for spacing between bars
+
     array.forEach(value => {
         const bar = document.createElement('div');
         bar.classList.add('array-bar');
-        bar.style.height = `${value*10}px`;
+        bar.style.height = `${value * 5}px`;
+        bar.style.width = `${barWidth}px`;
         arrayContainer.appendChild(bar);
     });
 }
 
+
 // DESC: Render bar graph and retain sorted node colors
+// function renderHeapSort(sortRender = []) {
+//     const arrayBars = document.querySelectorAll('.array-bar');
+//     array.forEach((value, index) => {
+//         const bar = arrayBars[index];
+//         if (bar) {
+//             bar.style.height = `${value * 10}px`;
+//             if (sortRender.includes(index)) {
+//                 bar.classList.add('sorted');
+//             } else {
+//                 bar.classList.remove('sorted');
+//             }
+//         }
+//     });
+// }
+
 function renderHeapSort(sortRender = []) {
+    const arrayContainer = document.getElementById('array-container');
     const arrayBars = document.querySelectorAll('.array-bar');
+
+    // Calculate bar width and height based on container size
+    const containerWidth = arrayContainer.clientWidth;
+    const containerHeight = arrayContainer.clientHeight;
+    const barWidth = Math.floor(containerWidth / array.length) - 2;
+
     array.forEach((value, index) => {
         const bar = arrayBars[index];
         if (bar) {
-            bar.style.height = `${value * 10}px`;
+            // Adjust bar height and width
+            bar.style.height = `${(value / 100) * containerHeight}px`;
+            bar.style.width = `${barWidth}px`;
+
+            // Apply styling for sorted bars
             if (sortRender.includes(index)) {
                 bar.classList.add('sorted');
             } else {
@@ -330,11 +374,22 @@ async function bubbleSwap(i, j) {
 
 // DESC: Render for bubble sort to keep red color
 async function renderBubbleSort(sortRender = [], compareRender = []) {
+    const arrayContainer = document.getElementById('array-container');
     const arrayBars = document.querySelectorAll('.array-bar');
+
+    // Calculate bar width and height based on container size
+    const containerWidth = arrayContainer.clientWidth;
+    const containerHeight = arrayContainer.clientHeight;
+    const barWidth = Math.floor(containerWidth / array.length) - 2;
+
     array.forEach((value, index) => {
         const bar = arrayBars[index];
         if (bar) {
-            bar.style.height = `${value * 10}px`;
+            // Adjust bar height and width
+            bar.style.height = `${(value / 100) * containerHeight}px`;
+            bar.style.width = `${barWidth}px`;
+
+            // Apply styling for comparison and sorted bars
             if (compareRender.includes(index)) {
                 bar.classList.add('key');
             } else {

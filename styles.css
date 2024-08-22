@@ -8,7 +8,7 @@
     padding: 30px 0;
     /*text-align: center;*/
     vertical-align: middle;
-    z-index: 1000; /* Ensure it's above other content */
+    /* z-index: 00; Ensure it's above other content */
 }
 .header {
     font-family: Arial, sans-serif;
@@ -47,6 +47,7 @@
     background-color: #64b8f0;
     transition: background-color 0.5s ease; /* Add transition for smooth color change */
 }
+
 
 .array-bar.sorted {
     background-color: #2ecc71; /* Change color for nodes being swapped */
